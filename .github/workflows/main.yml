@@ -52,7 +52,7 @@ jobs:
         run: php artisan test
 
       - name: Rollback database
-        run: migrate:reset
+        run: php artisan migrate:reset
 
   deploy:
     name: Deploy to AWS Lambda
