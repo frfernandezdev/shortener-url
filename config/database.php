@@ -114,7 +114,7 @@ return [
 
         'testing' => [
             'driver' => 'sqlite',
-            'database' => ':memory:',
+            'database' => dirname(__DIR__).'/database/database.sqlite',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
