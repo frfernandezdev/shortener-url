@@ -11,17 +11,34 @@ jobs:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      # This step checks out a copy of your repository.
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # This step sets up Node.js environment.
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
           coverage: none
 
-      - name: Run composer install
-        run: composer install -n --prefer-dist
+      # This step installs the npm dependencies
+      - name: Install Npm dependencies
+        run: npm install
+
+      # This step installs Composer dependencies with the specified options.
+      - name: Install Composer dependencies
+        uses: "ramsey/composer-install@v2"
+        with:
+          composer-options: "-n --prefer-dist"
+
+      # This step build assets for website
+      - name: Build assets for website
+        run: npm run build
 
       - name: Prepare Laravel Application
         run: |
