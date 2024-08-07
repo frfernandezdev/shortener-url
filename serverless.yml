@@ -15,6 +15,7 @@ provider:
         AWS_BUCKET: !Ref Storage
         VITE_APP_NAME: ShortenerUrl
 
+        APP_KEY: ${ssm:/shortener-url/app_key}
         DB_HOST: ${ssm:/shortener-url/db_host}
         DB_PORT: ${ssm:/shortener-url/db_port}
         DB_DATABASE: ${ssm:/shortener-url/db_database}
