@@ -38,7 +38,7 @@ Time to shorten URLs and see the magic in action! Once everything is up and runn
 
 Ready to launch your project to stardom? Follow these steps and let the world see your brilliant creation:
 
-1. **Configure Production Environment**: Prepare your `.env` file on the server with all the necessary variables. It’s the secret to a fabulous application! 🌟🔧
+1. **Configure Production Environment**: Prepare your `.env` file on the server with all the necessary variables. Use [AWS Systems Manager](https://aws.amazon.com/systems-manager/) to manage your environment variables securely. It’s the secret to a fabulous application! 🌟🔧
 
 2. **Build Assets**: Run `npm run build` to build the frontend assets. Make everything shine in production! 💎✨
 
