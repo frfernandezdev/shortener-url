@@ -100,7 +100,9 @@ package:
         - '!node_modules/**'
         - '!public/storage'
         - '!resources/assets/**'
-        - '!storage/**'
+        - '!storage/app/**'
+        - '!storage/framework/**'
+        - '!storage/logs/**'
         - '!tests/**'
 
 functions:
