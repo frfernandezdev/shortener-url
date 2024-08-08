@@ -100,9 +100,7 @@ package:
         - '!node_modules/**'
         - '!public/storage'
         - '!resources/assets/**'
-        - '!storage/app/**'
-        - '!storage/framework/**'
-        - '!storage/logs/**'
+        - '!storage/**'
         - '!tests/**'
 
 functions:
@@ -126,6 +124,7 @@ constructs:
         type: server-side-website
         assets:
             '/build/*': public/build
+            '/docs/*': /storage/api-docs
             '/favicon.ico': public/favicon.ico
             '/robots.txt': public/robots.txt
             # add here any file or directory that needs to be served from S3
