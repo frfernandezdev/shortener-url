@@ -8,6 +8,7 @@
 
 Before starting this epic adventure, make sure you have these technological superpowers at hand:
 
+- [Node.js](https://nodejs.org/en/download/) 🌐: For all your JavaScript runtime needs.
 - [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos) 🛠️: Your dependency companion, the real MVP!
 - [Serverless](https://bref.sh/docs/setup) ☁️: Because deploying to the cloud has never been so easy.
 - [Docker](https://docs.docker.com/get-docker/) 🐳: The container of your dreams.
@@ -20,14 +21,14 @@ Let’s set the stage! Follow these steps and you’ll be ready to shorten URLs 
 1. Clone the repository to your local machine. 🖥️🔧
 2. Navigate to the project directory. 🗺️✨
 3. Run `./vendor/bin/sail up` to start the local development environment. The show is about to begin! 🎉
-4. Run `sail npm run build` to build the frontend assets. Inertia and React are going to shine! 🌈🎨
-5. Run `sail artisan migrate` to apply the database migrations. The tables and data are ready for action! 📊🔄
+4. Run `./vendor/bin/sail npm run build` to build the frontend assets. Inertia and React are going to shine! 🌈🎨
+5. Run `./vendor/bin/sail artisan migrate` to apply the database migrations. The tables and data are ready for action! 📊🔄
 
-   **Note:** If you modify the migrations or database schema, run `sail artisan migrate` again. Databases need love too! 💪❤️
+   **Note:** If you modify the migrations or database schema, run `./vendor/bin/sail artisan migrate` again. Databases need love too! 💪❤️
 
-6. Run `sail artisan l5-swagger:generate` to generate the Swagger documentation. Documentation has never been this impressive! 📚🚀
+6. Run `./vendor/bin/sail artisan l5-swagger:generate` to generate the Swagger documentation. Documentation has never been this impressive! 📚🚀
 
-   **Note:** If you modify the Swagger documentation, be sure to run `sail artisan l5-swagger:generate` again. Fresh documentation is the best! 🌟📖
+   **Note:** If you modify the Swagger documentation, be sure to run `./vendor/bin/sail artisan l5-swagger:generate` again. Fresh documentation is the best! 🌟📖
 
 ## Usage
 
