@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use Illuminate\Http\Request;
-use App\Models\ShortenerUrl;
 use App\Services\ShortenerUrlService;
 use App\Http\Requests\ShortenerUrlCreateRequest;
 use App\Http\Requests\ShortenerUrlUpdateRequest;
@@ -16,9 +15,6 @@ class ShortenerUrlController extends Controller
      */
     public function __construct(protected ShortenerUrlService $service) {}
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $search = $request->input('search', null);
@@ -56,8 +52,42 @@ class ShortenerUrlController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
+    * @OA\Post(
+    *     path="/api/shortenerUrl",
+    *     tags={"shortenerUrl"},
+    *     security={{"bearerAuth":{}}},
+    *     @OA\RequestBody(
+    *       required=true,
+    *       description="Provide All Info Below",
+    *       @OA\JsonContent(
+    *           required={"title", "original_url"},
+    *           @OA\Property(
+    *               property="title",
+    *               type="string",
+    *               format="text",
+    *               example="ShortenerUrl 1"
+    *           ),
+    *           @OA\Property(
+    *               property="original_url",
+    *               type="string",
+    *               format="text",
+    *               example="http://example.com"
+    *           )
+    *       )
+    *     ),
+    *     @OA\Response(
+    *       response="200",
+    *       description="Store a newly created resource in storage.",
+    *       @OA\JsonContent(
+    *           @OA\Property(
+    *               property="id",
+    *               type="string",
+    *               format="text"
+    *           )
+    *       )
+    *     )
+    * )
+    */
     public function store(ShortenerUrlCreateRequest $request)
     {
         $validated = $request->validated();
@@ -80,8 +110,49 @@ class ShortenerUrlController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     */
+    * @OA\Patch(
+    *     path="/api/shortenerUrl/{id}",
+    *     tags={"shortenerUrl"},
+    *     security={{"bearerAuth":{}}},
+    *     @OA\Parameter(
+    *       parameter="id",
+    *       name="id",
+    *       description="The id of shortenerUrl",
+    *       in="path",
+    *       required=true
+    *     ),
+    *     @OA\RequestBody(
+    *       required=true,
+    *       description="Provide All Info Below",
+    *       @OA\JsonContent(
+    *           required={"title", "original_url"},
+    *           @OA\Property(
+    *               property="title",
+    *               type="string",
+    *               format="text",
+    *               example="ShortenerUrl 1"
+    *           ),
+    *           @OA\Property(
+    *               property="original_url",
+    *               type="string",
+    *               format="text",
+    *               example="http://example.com"
+    *           )
+    *       )
+    *     ),
+    *     @OA\Response(
+    *       response="200",
+    *       description="Store a newly created resource in storage.",
+    *       @OA\JsonContent(
+    *           @OA\Property(
+    *               property="id",
+    *               type="string",
+    *               format="text"
+    *           )
+    *       )
+    *     )
+    * )
+    */
     public function update(ShortenerUrlUpdateRequest $request, string $id)
     {
         $validated = $request->validated();
@@ -100,8 +171,30 @@ class ShortenerUrlController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     */
+    * @OA\Delete(
+    *     path="/api/shortenerUrl/{id}",
+    *     tags={"shortenerUrl"},
+    *     security={{"bearerAuth":{}}},
+    *     @OA\Parameter(
+    *       parameter="id",
+    *       name="id",
+    *       description="The id of shortenerUrl",
+    *       in="path",
+    *       required=true
+    *     ),
+    *     @OA\Response(
+    *       response="200",
+    *       description="Store a newly created resource in storage.",
+    *       @OA\JsonContent(
+    *           @OA\Property(
+    *               property="id",
+    *               type="string",
+    *               format="text"
+    *           )
+    *       )
+    *     )
+    * )
+    */
     public function destroy(string $id)
     {
         $this->service->delete($id);

@@ -9,11 +9,13 @@
         "bref/bref": "^2.3",
         "bref/extra-php-extensions": "^1.4",
         "bref/laravel-bridge": "^2.4",
+        "darkaonline/l5-swagger": "^8.6",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "tightenco/ziggy": "^2.0"
+        "tightenco/ziggy": "^2.0",
+        "zircote/swagger-php": "^4.10"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

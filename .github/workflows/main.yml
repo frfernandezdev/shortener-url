@@ -92,11 +92,24 @@ jobs:
       - name: Build assets for website
         run: npm run build
 
+      # This step generate swagger docs
+      - name: Generate swagger docs
+        run: php artisan l5-swagger:generate
+
       # This step deploys your application to AWS Lambda using the Serverless Framework.
       - name: Deploy to AWS Lambda
         uses: serverless/github-action@v3
         with:
           args: deploy --stage=prod
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # This step run migrations
+      - name: Run migrations
+        uses: serverless/github-action@v3
+        with:
+          args: bref:cli --function=artisan --args="migrate --force" --stage=prod
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
