@@ -10,18 +10,56 @@
       "stage": "prod",
       "environment": {
         "NODE_ENV": "production",
+        "APP_NAME": "ShortenerUrl",
         "APP_ENV": "production",
-        "FILESYSTEM_DISK": "s3",
-        "FILESYSTEM_DISK_PUBLIC": "s3",
-        "AWS_BUCKET": {
-          "Ref": "Storage"
-        },
-        "VITE_APP_NAME": "ShortenerUrl",
+        "APP_KEY": "base64:R1XO11Kq+97LIUk5gvcooNMFG8JuOWP+814YPYwhvOo=",
+        "APP_DEBUG": "false",
+        "APP_TIMEZONE": "UTC",
+        "APP_LOCALE": "en",
+        "APP_FALLBACK_LOCALE": "en",
+        "APP_FAKER_LOCALE": "en_US",
+        "APP_MAINTENANCE_DRIVER": "file",
+        "BCRYPT_ROUNDS": "12",
+        "LOG_CHANNEL": "stack",
+        "LOG_STACK": "single",
+        "LOG_LEVEL": "debug",
+        "DB_CONNECTION": "pgsql",
         "DB_HOST": "shortener-url.cp02w8yuwf99.us-east-1.rds.amazonaws.com",
         "DB_PORT": "5432",
         "DB_DATABASE": "shortener-url",
         "DB_USERNAME": "postgres",
-        "DB_PASSWORD": "gfoNg4alticjELimYH36"
+        "DB_PASSWORD": "gfoNg4alticjELimYH36",
+        "SESSION_DRIVER": "database",
+        "SESSION_LIFETIME": "120",
+        "SESSION_ENCRYPT": "false",
+        "SESSION_PATH": "/",
+        "BROADCAST_CONNECTION": "log",
+        "FILESYSTEM_DISK": "s3",
+        "FILESYSTEM_DISK_PUBLIC": "s3",
+        "QUEUE_CONNECTION": "database",
+        "CACHE_STORE": "database",
+        "MEMCACHED_HOST": "memcached",
+        "REDIS_CLIENT": "phpredis",
+        "REDIS_HOST": "redis",
+        "REDIS_PORT": "6379",
+        "MAIL_MAILER": "log",
+        "MAIL_HOST": "127.0.0.1",
+        "MAIL_PORT": "2525",
+        "MAIL_FROM_ADDRESS": "hello@example.com",
+        "MAIL_FROM_NAME": "${APP_NAME}",
+        "AWS_BUCKET": {
+          "Ref": "Storage"
+        },
+        "VITE_APP_NAME": "${APP_NAME}",
+        "WWWGROUP": "1000",
+        "WWWUSER": "1000",
+        "LOG_DEPRECATIONS_CHANNEL": null,
+        "SESSION_DOMAIN": null,
+        "CACHE_PREFIX": null,
+        "REDIS_PASSWORD": null,
+        "MAIL_USERNAME": null,
+        "MAIL_PASSWORD": null,
+        "MAIL_ENCRYPTION": null
       },
       "iam": {
         "role": {
@@ -218,7 +256,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/laravel/prod/1723064874183-2024-08-07T21:07:54.183Z/laravel.zip"
+                "S3Key": "serverless/laravel/prod/1723156703259-2024-08-08T22:38:23.259Z/laravel.zip"
               },
               "Handler": "public/index.php",
               "Runtime": "provided.al2",
@@ -228,18 +266,49 @@
               "Environment": {
                 "Variables": {
                   "NODE_ENV": "production",
+                  "APP_NAME": "ShortenerUrl",
                   "APP_ENV": "production",
-                  "FILESYSTEM_DISK": "s3",
-                  "FILESYSTEM_DISK_PUBLIC": "s3",
-                  "AWS_BUCKET": {
-                    "$ref": "$[\"service\"][\"provider\"][\"environment\"][\"AWS_BUCKET\"]"
-                  },
-                  "VITE_APP_NAME": "ShortenerUrl",
+                  "APP_KEY": "base64:R1XO11Kq+97LIUk5gvcooNMFG8JuOWP+814YPYwhvOo=",
+                  "APP_DEBUG": "false",
+                  "APP_TIMEZONE": "UTC",
+                  "APP_LOCALE": "en",
+                  "APP_FALLBACK_LOCALE": "en",
+                  "APP_FAKER_LOCALE": "en_US",
+                  "APP_MAINTENANCE_DRIVER": "file",
+                  "BCRYPT_ROUNDS": "12",
+                  "LOG_CHANNEL": "stack",
+                  "LOG_STACK": "single",
+                  "LOG_LEVEL": "debug",
+                  "DB_CONNECTION": "pgsql",
                   "DB_HOST": "shortener-url.cp02w8yuwf99.us-east-1.rds.amazonaws.com",
                   "DB_PORT": "5432",
                   "DB_DATABASE": "shortener-url",
                   "DB_USERNAME": "postgres",
-                  "DB_PASSWORD": "gfoNg4alticjELimYH36"
+                  "DB_PASSWORD": "gfoNg4alticjELimYH36",
+                  "SESSION_DRIVER": "database",
+                  "SESSION_LIFETIME": "120",
+                  "SESSION_ENCRYPT": "false",
+                  "SESSION_PATH": "/",
+                  "BROADCAST_CONNECTION": "log",
+                  "FILESYSTEM_DISK": "s3",
+                  "FILESYSTEM_DISK_PUBLIC": "s3",
+                  "QUEUE_CONNECTION": "database",
+                  "CACHE_STORE": "database",
+                  "MEMCACHED_HOST": "memcached",
+                  "REDIS_CLIENT": "phpredis",
+                  "REDIS_HOST": "redis",
+                  "REDIS_PORT": "6379",
+                  "MAIL_MAILER": "log",
+                  "MAIL_HOST": "127.0.0.1",
+                  "MAIL_PORT": "2525",
+                  "MAIL_FROM_ADDRESS": "hello@example.com",
+                  "MAIL_FROM_NAME": "${APP_NAME}",
+                  "AWS_BUCKET": {
+                    "$ref": "$[\"service\"][\"provider\"][\"environment\"][\"AWS_BUCKET\"]"
+                  },
+                  "VITE_APP_NAME": "${APP_NAME}",
+                  "WWWGROUP": "1000",
+                  "WWWUSER": "1000"
                 }
               },
               "Role": {
@@ -263,7 +332,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/laravel/prod/1723064874183-2024-08-07T21:07:54.183Z/laravel.zip"
+                "S3Key": "serverless/laravel/prod/1723156703259-2024-08-08T22:38:23.259Z/laravel.zip"
               },
               "Handler": "artisan",
               "Runtime": "provided.al2",
@@ -273,18 +342,49 @@
               "Environment": {
                 "Variables": {
                   "NODE_ENV": "production",
+                  "APP_NAME": "ShortenerUrl",
                   "APP_ENV": "production",
-                  "FILESYSTEM_DISK": "s3",
-                  "FILESYSTEM_DISK_PUBLIC": "s3",
-                  "AWS_BUCKET": {
-                    "$ref": "$[\"service\"][\"provider\"][\"environment\"][\"AWS_BUCKET\"]"
-                  },
-                  "VITE_APP_NAME": "ShortenerUrl",
+                  "APP_KEY": "base64:R1XO11Kq+97LIUk5gvcooNMFG8JuOWP+814YPYwhvOo=",
+                  "APP_DEBUG": "false",
+                  "APP_TIMEZONE": "UTC",
+                  "APP_LOCALE": "en",
+                  "APP_FALLBACK_LOCALE": "en",
+                  "APP_FAKER_LOCALE": "en_US",
+                  "APP_MAINTENANCE_DRIVER": "file",
+                  "BCRYPT_ROUNDS": "12",
+                  "LOG_CHANNEL": "stack",
+                  "LOG_STACK": "single",
+                  "LOG_LEVEL": "debug",
+                  "DB_CONNECTION": "pgsql",
                   "DB_HOST": "shortener-url.cp02w8yuwf99.us-east-1.rds.amazonaws.com",
                   "DB_PORT": "5432",
                   "DB_DATABASE": "shortener-url",
                   "DB_USERNAME": "postgres",
-                  "DB_PASSWORD": "gfoNg4alticjELimYH36"
+                  "DB_PASSWORD": "gfoNg4alticjELimYH36",
+                  "SESSION_DRIVER": "database",
+                  "SESSION_LIFETIME": "120",
+                  "SESSION_ENCRYPT": "false",
+                  "SESSION_PATH": "/",
+                  "BROADCAST_CONNECTION": "log",
+                  "FILESYSTEM_DISK": "s3",
+                  "FILESYSTEM_DISK_PUBLIC": "s3",
+                  "QUEUE_CONNECTION": "database",
+                  "CACHE_STORE": "database",
+                  "MEMCACHED_HOST": "memcached",
+                  "REDIS_CLIENT": "phpredis",
+                  "REDIS_HOST": "redis",
+                  "REDIS_PORT": "6379",
+                  "MAIL_MAILER": "log",
+                  "MAIL_HOST": "127.0.0.1",
+                  "MAIL_PORT": "2525",
+                  "MAIL_FROM_ADDRESS": "hello@example.com",
+                  "MAIL_FROM_NAME": "${APP_NAME}",
+                  "AWS_BUCKET": {
+                    "$ref": "$[\"service\"][\"provider\"][\"environment\"][\"AWS_BUCKET\"]"
+                  },
+                  "VITE_APP_NAME": "${APP_NAME}",
+                  "WWWGROUP": "1000",
+                  "WWWUSER": "1000"
                 }
               },
               "Role": {
@@ -302,24 +402,24 @@
               "ArtisanLogGroup"
             ]
           },
-          "WebLambdaVersion7jWFskjr9sZVsTy3LM7MOqjioGRfPlCmPuwH372Dsg0": {
+          "WebLambdaVersionlkCyTSN9XRDYUARbBpfkTwq7gv5r2UoA5KByzRus0o": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "WebLambdaFunction"
               },
-              "CodeSha256": "moa/piqyiJhEzTM2ZfZOha0mnUCDltfT0w9vz9QbeCs="
+              "CodeSha256": "ZUxtsQYF8bITRn6uQT9Ubswmx4Ji8ILjvY5BO7jn/1E="
             }
           },
-          "ArtisanLambdaVersioncABi8v3vEEoICsXejQkGePAQvYCLudcN3dybMtQ1Hs": {
+          "ArtisanLambdaVersion0fMGeJq18Vl9hycLfBFJHuAXSfKEwXzxcnm3xkJ4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ArtisanLambdaFunction"
               },
-              "CodeSha256": "moa/piqyiJhEzTM2ZfZOha0mnUCDltfT0w9vz9QbeCs="
+              "CodeSha256": "ZUxtsQYF8bITRn6uQT9Ubswmx4Ji8ILjvY5BO7jn/1E="
             }
           },
           "HttpApi": {
@@ -507,6 +607,32 @@
                         ]
                       ]
                     }
+                  },
+                  {
+                    "Action": "s3:GetObject",
+                    "Effect": "Allow",
+                    "Principal": {
+                      "CanonicalUser": {
+                        "Fn::GetAtt": [
+                          "websiteCDNOrigin5S3Origin34B95032",
+                          "S3CanonicalUserId"
+                        ]
+                      }
+                    },
+                    "Resource": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          {
+                            "Fn::GetAtt": [
+                              "websiteAssets2A73BB69",
+                              "Arn"
+                            ]
+                          },
+                          "/*"
+                        ]
+                      ]
+                    }
                   }
                 ],
                 "Version": "2012-10-17"
@@ -549,6 +675,14 @@
               }
             }
           },
+          "websiteCDNOrigin5S3Origin34B95032": {
+            "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+            "Properties": {
+              "CloudFrontOriginAccessIdentityConfig": {
+                "Comment": "Identity for websiteCDNOrigin5A04B149B"
+              }
+            }
+          },
           "websiteCDN060D946D": {
             "Type": "AWS::CloudFront::Distribution",
             "Properties": {
@@ -574,7 +708,7 @@
                     ],
                     "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
                     "Compress": true,
-                    "PathPattern": "/favicon.ico",
+                    "PathPattern": "/docs/*",
                     "TargetOriginId": "websiteCDNOrigin36B7E5D97",
                     "ViewerProtocolPolicy": "redirect-to-https"
                   },
@@ -586,8 +720,20 @@
                     ],
                     "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
                     "Compress": true,
-                    "PathPattern": "/robots.txt",
+                    "PathPattern": "/favicon.ico",
                     "TargetOriginId": "websiteCDNOrigin4F20241D3",
+                    "ViewerProtocolPolicy": "redirect-to-https"
+                  },
+                  {
+                    "AllowedMethods": [
+                      "GET",
+                      "HEAD",
+                      "OPTIONS"
+                    ],
+                    "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                    "Compress": true,
+                    "PathPattern": "/robots.txt",
+                    "TargetOriginId": "websiteCDNOrigin5A04B149B",
                     "ViewerProtocolPolicy": "redirect-to-https"
                   }
                 ],
@@ -718,6 +864,28 @@
                         ]
                       }
                     }
+                  },
+                  {
+                    "DomainName": {
+                      "Fn::GetAtt": [
+                        "websiteAssets2A73BB69",
+                        "RegionalDomainName"
+                      ]
+                    },
+                    "Id": "websiteCDNOrigin5A04B149B",
+                    "S3OriginConfig": {
+                      "OriginAccessIdentity": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "origin-access-identity/cloudfront/",
+                            {
+                              "Ref": "websiteCDNOrigin5S3Origin34B95032"
+                            }
+                          ]
+                        ]
+                      }
+                    }
                   }
                 ]
               }
@@ -736,7 +904,7 @@
           "WebLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "WebLambdaVersion7jWFskjr9sZVsTy3LM7MOqjioGRfPlCmPuwH372Dsg0"
+              "Ref": "WebLambdaVersionlkCyTSN9XRDYUARbBpfkTwq7gv5r2UoA5KByzRus0o"
             },
             "Export": {
               "Name": "sls-laravel-prod-WebLambdaFunctionQualifiedArn"
@@ -745,7 +913,7 @@
           "ArtisanLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ArtisanLambdaVersioncABi8v3vEEoICsXejQkGePAQvYCLudcN3dybMtQ1Hs"
+              "Ref": "ArtisanLambdaVersion0fMGeJq18Vl9hycLfBFJHuAXSfKEwXzxcnm3xkJ4"
             },
             "Export": {
               "Name": "sls-laravel-prod-ArtisanLambdaFunctionQualifiedArn"
@@ -925,7 +1093,7 @@
         "package": {},
         "memory": 1024,
         "vpc": {},
-        "versionLogicalId": "WebLambdaVersion7jWFskjr9sZVsTy3LM7MOqjioGRfPlCmPuwH372Dsg0"
+        "versionLogicalId": "WebLambdaVersionlkCyTSN9XRDYUARbBpfkTwq7gv5r2UoA5KByzRus0o"
       },
       "artisan": {
         "handler": "artisan",
@@ -939,7 +1107,7 @@
         "package": {},
         "memory": 1024,
         "vpc": {},
-        "versionLogicalId": "ArtisanLambdaVersioncABi8v3vEEoICsXejQkGePAQvYCLudcN3dybMtQ1Hs"
+        "versionLogicalId": "ArtisanLambdaVersion0fMGeJq18Vl9hycLfBFJHuAXSfKEwXzxcnm3xkJ4"
       }
     },
     "resources": {
@@ -1037,6 +1205,32 @@
                       ]
                     ]
                   }
+                },
+                {
+                  "Action": "s3:GetObject",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "CanonicalUser": {
+                      "Fn::GetAtt": [
+                        "websiteCDNOrigin5S3Origin34B95032",
+                        "S3CanonicalUserId"
+                      ]
+                    }
+                  },
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        {
+                          "Fn::GetAtt": [
+                            "websiteAssets2A73BB69",
+                            "Arn"
+                          ]
+                        },
+                        "/*"
+                      ]
+                    ]
+                  }
                 }
               ],
               "Version": "2012-10-17"
@@ -1079,6 +1273,14 @@
             }
           }
         },
+        "websiteCDNOrigin5S3Origin34B95032": {
+          "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+          "Properties": {
+            "CloudFrontOriginAccessIdentityConfig": {
+              "Comment": "Identity for websiteCDNOrigin5A04B149B"
+            }
+          }
+        },
         "websiteCDN060D946D": {
           "Type": "AWS::CloudFront::Distribution",
           "Properties": {
@@ -1104,7 +1306,7 @@
                   ],
                   "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
                   "Compress": true,
-                  "PathPattern": "/favicon.ico",
+                  "PathPattern": "/docs/*",
                   "TargetOriginId": "websiteCDNOrigin36B7E5D97",
                   "ViewerProtocolPolicy": "redirect-to-https"
                 },
@@ -1116,8 +1318,20 @@
                   ],
                   "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
                   "Compress": true,
-                  "PathPattern": "/robots.txt",
+                  "PathPattern": "/favicon.ico",
                   "TargetOriginId": "websiteCDNOrigin4F20241D3",
+                  "ViewerProtocolPolicy": "redirect-to-https"
+                },
+                {
+                  "AllowedMethods": [
+                    "GET",
+                    "HEAD",
+                    "OPTIONS"
+                  ],
+                  "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+                  "Compress": true,
+                  "PathPattern": "/robots.txt",
+                  "TargetOriginId": "websiteCDNOrigin5A04B149B",
                   "ViewerProtocolPolicy": "redirect-to-https"
                 }
               ],
@@ -1248,6 +1462,28 @@
                       ]
                     }
                   }
+                },
+                {
+                  "DomainName": {
+                    "Fn::GetAtt": [
+                      "websiteAssets2A73BB69",
+                      "RegionalDomainName"
+                    ]
+                  },
+                  "Id": "websiteCDNOrigin5A04B149B",
+                  "S3OriginConfig": {
+                    "OriginAccessIdentity": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "origin-access-identity/cloudfront/",
+                          {
+                            "Ref": "websiteCDNOrigin5S3Origin34B95032"
+                          }
+                        ]
+                      ]
+                    }
+                  }
                 }
               ]
             }
@@ -1297,18 +1533,56 @@
         "stage": "prod",
         "environment": {
           "NODE_ENV": "production",
+          "APP_NAME": "ShortenerUrl",
           "APP_ENV": "production",
-          "FILESYSTEM_DISK": "s3",
-          "FILESYSTEM_DISK_PUBLIC": "s3",
-          "AWS_BUCKET": {
-            "Ref": "Storage"
-          },
-          "VITE_APP_NAME": "ShortenerUrl",
+          "APP_KEY": "base64:R1XO11Kq+97LIUk5gvcooNMFG8JuOWP+814YPYwhvOo=",
+          "APP_DEBUG": "false",
+          "APP_TIMEZONE": "UTC",
+          "APP_LOCALE": "en",
+          "APP_FALLBACK_LOCALE": "en",
+          "APP_FAKER_LOCALE": "en_US",
+          "APP_MAINTENANCE_DRIVER": "file",
+          "BCRYPT_ROUNDS": "12",
+          "LOG_CHANNEL": "stack",
+          "LOG_STACK": "single",
+          "LOG_LEVEL": "debug",
+          "DB_CONNECTION": "pgsql",
           "DB_HOST": "shortener-url.cp02w8yuwf99.us-east-1.rds.amazonaws.com",
           "DB_PORT": "5432",
           "DB_DATABASE": "shortener-url",
           "DB_USERNAME": "postgres",
-          "DB_PASSWORD": "gfoNg4alticjELimYH36"
+          "DB_PASSWORD": "gfoNg4alticjELimYH36",
+          "SESSION_DRIVER": "database",
+          "SESSION_LIFETIME": "120",
+          "SESSION_ENCRYPT": "false",
+          "SESSION_PATH": "/",
+          "BROADCAST_CONNECTION": "log",
+          "FILESYSTEM_DISK": "s3",
+          "FILESYSTEM_DISK_PUBLIC": "s3",
+          "QUEUE_CONNECTION": "database",
+          "CACHE_STORE": "database",
+          "MEMCACHED_HOST": "memcached",
+          "REDIS_CLIENT": "phpredis",
+          "REDIS_HOST": "redis",
+          "REDIS_PORT": "6379",
+          "MAIL_MAILER": "log",
+          "MAIL_HOST": "127.0.0.1",
+          "MAIL_PORT": "2525",
+          "MAIL_FROM_ADDRESS": "hello@example.com",
+          "MAIL_FROM_NAME": "${APP_NAME}",
+          "AWS_BUCKET": {
+            "Ref": "Storage"
+          },
+          "VITE_APP_NAME": "${APP_NAME}",
+          "WWWGROUP": "1000",
+          "WWWUSER": "1000",
+          "LOG_DEPRECATIONS_CHANNEL": null,
+          "SESSION_DOMAIN": null,
+          "CACHE_PREFIX": null,
+          "REDIS_PASSWORD": null,
+          "MAIL_USERNAME": null,
+          "MAIL_PASSWORD": null,
+          "MAIL_ENCRYPTION": null
         },
         "iam": {
           "role": {
@@ -1385,6 +1659,7 @@
           "type": "server-side-website",
           "assets": {
             "/build/*": "public/build",
+            "/docs/*": "storage/api-docs",
             "/favicon.ico": "public/favicon.ico",
             "/robots.txt": "public/robots.txt"
           }
@@ -1396,7 +1671,7 @@
     "artifact": "/mnt/91ef2e5f-8811-4336-8d74-79c6b59c921f/workspace/applications/spot2/.serverless/laravel.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/laravel/prod/1723064874183-2024-08-07T21:07:54.183Z",
+    "artifactDirectoryName": "serverless/laravel/prod/1723156703259-2024-08-08T22:38:23.259Z",
     "artifact": "laravel.zip"
   }
 }
