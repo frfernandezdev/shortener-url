@@ -5,11 +5,13 @@ import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { PageProps } from "@/types";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { Head, useForm } from "@inertiajs/react";
+import { Head, router, useForm } from "@inertiajs/react";
+import axios from "axios";
 import { ChangeEvent, FormEventHandler, useRef } from "react";
 
 
 export type EditShortenerURLProps = {
+  token: string;
   item: {
     id: string;
     code: string;
@@ -22,6 +24,7 @@ export type EditShortenerURLProps = {
 
 export default function EditShortenerURL({
   auth,
+  token,
   item
 }: PageProps<EditShortenerURLProps>) {
   const { id, title, original_url } = item;
@@ -36,12 +39,17 @@ export default function EditShortenerURL({
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setData(field, event.target.value);
 
-  const submit: FormEventHandler = (e) => {
+  const submit: FormEventHandler = async (e) => {
     e.preventDefault();
 
-    patch(route("shortenerUrl.update", id), {
-      onFinish: () => reset("title", "original_url"),
+    await axios.patch(route("api.shortenerUrl.update", id), data, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
     });
+
+    reset("title", "original_url")
+    router.visit(route("shortenerUrl.index"));
   };
 
   return (
@@ -53,7 +61,7 @@ export default function EditShortenerURL({
           label: "List shortener urls",
         },
         {
-          href: route("shortenerUrl.update", item.id),
+          href: route("shortenerUrl.show", item.id),
           label: "Edit shortener url",
         },
       ]}

@@ -10,7 +10,8 @@ import {
   TrashIcon,
   PencilSquareIcon,
 } from "@heroicons/react/24/outline";
-import { Head, Link, router } from "@inertiajs/react";
+import { Head, router, usePage } from "@inertiajs/react";
+import axios from "axios";
 
 const columns: TableHeadCell[] = [
   {
@@ -36,7 +37,7 @@ const columns: TableHeadCell[] = [
 ];
 
 export type ListShortenerURLProps = {
-  domain: string;
+  token: string;
   paginator: {
     page: number;
     perPage: number;
@@ -50,7 +51,7 @@ export type ListShortenerURLProps = {
 
 export default function ListShortenerURL({
   auth,
-  domain,
+  token,
   paginator,
 }: PageProps<ListShortenerURLProps>) {
   const [rows, setRows] = useState(paginator.items);
@@ -66,10 +67,14 @@ export default function ListShortenerURL({
     router.get(route("shortenerUrl.index", { page }));
   }, [page]);
 
-  const handleRemove = () => {
-    router.delete(route("shortenerUrl.destroy", remove as string), {
-      preserveState: false,
+  const handleRemove = async () => {
+    await axios.delete(route("api.shortenerUrl.destroy", remove as string), {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
     });
+
+    router.visit(route("shortenerUrl.index"), { preserveState: false });
   };
 
   const onRemove = (id: string) => (event: MouseEvent<HTMLButtonElement>) => {
@@ -157,7 +162,7 @@ export default function ListShortenerURL({
         setPage={onSetPage}
         onNext={onNext}
         onPrevious={onPrevious}
-        onClickItem={(row) => window.open(route("shortenerUrl.link", row.code))}
+        onClickItem={(row) => window.open(route("api.shortenerUrl.link", row.code))}
       />
       <ModalConfirm
         open={Boolean(remove)}

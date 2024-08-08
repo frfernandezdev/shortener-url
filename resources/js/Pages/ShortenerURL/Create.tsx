@@ -1,4 +1,3 @@
-import { BreadcrumbItemProps } from "@/Components/Breadcrumb";
 import IconButton from "@/Components/IconButton";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
@@ -6,11 +5,16 @@ import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { PageProps } from "@/types";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { Head, useForm } from "@inertiajs/react";
+import { Head, router, useForm } from "@inertiajs/react";
+import axios from "axios";
 import { ChangeEvent, FormEventHandler, useRef } from "react";
 
 
-export default function CreateShortenerURL({ auth }: PageProps) {
+export type CreataeSAuthorizationProps = {
+  token: string;
+}
+
+export default function CreateShortenerURL({ auth, token }: PageProps) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const { data, setData, post, processing, errors, reset } = useForm({
     title: "",
@@ -22,12 +26,17 @@ export default function CreateShortenerURL({ auth }: PageProps) {
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setData(field, event.target.value);
 
-  const submit: FormEventHandler = (e) => {
+  const submit: FormEventHandler = async (e) => {
     e.preventDefault();
 
-    post(route("shortenerUrl.store"), {
-      onFinish: () => reset("title", "original_url"),
+    await axios.post(route("api.shortenerUrl.store"), data, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
     });
+
+    reset("title", "original_url")
+    router.visit(route("shortenerUrl.index"));
   };
 
   return (

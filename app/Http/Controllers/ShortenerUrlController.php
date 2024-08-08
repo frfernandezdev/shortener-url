@@ -31,6 +31,7 @@ class ShortenerUrlController extends Controller
 
         return Inertia::render('ShortenerURL/List', [
             'csrf' => csrf_token(),
+            'token' => $request->session()->get('token'),
             'domain' => $request->root(),
             'paginator' => [
                 'page' => $paginator->currentPage(),
@@ -47,9 +48,11 @@ class ShortenerUrlController extends Controller
     /**
      * Display a create form fo the resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return Inertia::render('ShortenerURL/Create');
+        return Inertia::render('ShortenerURL/Create', [
+            'token' => $request->session()->get('token'),
+        ]);
     }
 
     /**
@@ -58,19 +61,22 @@ class ShortenerUrlController extends Controller
     public function store(ShortenerUrlCreateRequest $request)
     {
         $validated = $request->validated();
-
-        $this->service->create($validated);
-
-        return redirect()->intended(route('shortenerUrl.index'));
+        $id =  $this->service->create($validated);
+        return response()->json([
+            'id' => $id
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request, string $id)
     {
         $shortenerUrl = $this->service->findById($id);
-        return Inertia::render('ShortenerURL/Edit', ['item' => $shortenerUrl]);
+        return Inertia::render('ShortenerURL/Edit', [
+            'token' => $request->session()->get('token'),
+            'item' => $shortenerUrl
+        ]);
     }
 
     /**
@@ -79,10 +85,10 @@ class ShortenerUrlController extends Controller
     public function update(ShortenerUrlUpdateRequest $request, string $id)
     {
         $validated = $request->validated();
-
-        $this->service->update($id, $validated);
-
-        return redirect()->intended(route('shortenerUrl.index'));
+        $id = $this->service->update($id, $validated);
+        return response()->json([
+            'id' => $id
+        ]);
     }
 
     /**
@@ -99,6 +105,8 @@ class ShortenerUrlController extends Controller
     public function destroy(string $id)
     {
         $this->service->delete($id);
-        return redirect()->intended(route('shortenerUrl.index'));
+        return response()->json([
+            'id' => $id
+        ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\ShortenerUrl;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -34,7 +35,7 @@ class ShortenerUrlService
         return $query->paginate($perPage, ['*'], 'page', $page);
     }
 
-    public function create(array $payload) {
+    public function create(array $payload): int {
         $user = User::find(Auth::id());
 
         $shortenerUrl = new ShortenerUrl;
@@ -42,15 +43,21 @@ class ShortenerUrlService
         $shortenerUrl->code = substr(str_replace('-', '', Str::uuid()), 0, 8);
         $shortenerUrl->user()->associate($user);
         $shortenerUrl->save();
+
+        return $shortenerUrl->id;
     }
 
-    public function update(string $id, array $payload) {
+    public function update(string $id, array $payload): int {
         $shortenerUrl = ShortenerUrl::find($id);
         $shortenerUrl->update($payload);
+
+        return $shortenerUrl->id;
     }
 
-    public function delete(string $id) {
+    public function delete(string $id): int {
         $shortenerUrl = ShortenerUrl::find($id);
         $shortenerUrl->update(['disabled' => true]);
+
+        return $shortenerUrl->id;
     }
 }
