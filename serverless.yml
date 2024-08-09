@@ -106,12 +106,15 @@ package:
 functions:
     # This function runs the Laravel website/API
     web:
-        handler: public/index.php
+        handler: Bref\LaravelBridge\Http\OctaneHandler
         runtime: php-83-fpm
         # memorySize: 128 # set to 512M instead of 1024M (the default)
         timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
         events:
             - httpApi: '*'
+        environment:
+            BREF_LOOP_MAX: 250
+            OCTANE_PERSIST_DATABASE_SESSIONS: 1
 
     # This function lets us run artisan commands in Lambda
     artisan:
