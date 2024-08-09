@@ -45,6 +45,9 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        $token = $request->user()->createToken('token');
+        $request->session()->put('tokenId', $token->accessToken->id);
+        $request->session()->put('token', $token->plainTextToken);
 
         return redirect(route('shortenerUrl.index', absolute: false));
     }
