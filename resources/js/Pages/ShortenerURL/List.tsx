@@ -162,7 +162,10 @@ export default function ListShortenerURL({
         setPage={onSetPage}
         onNext={onNext}
         onPrevious={onPrevious}
-        onClickItem={(row) => window.open(route("api.shortenerUrl.link", row.code))}
+        onClickItem={(row) => {
+          console.log(route("api.shortenerUrl.link", row.code))
+          window.open(route("api.shortenerUrl.link", row.code))
+        }}
       />
       <ModalConfirm
         open={Boolean(remove)}

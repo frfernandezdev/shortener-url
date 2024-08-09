@@ -165,8 +165,8 @@ class ShortenerUrlController extends Controller
     /**
      * Redirect to shortenLink.
      */
-    public function shortenLink(string $shortenLink) {
-        $shortenerUrl = $this->service->findByShortenerLink($shortenLink);
+    public function shortenerLink(string $shortenerLink) {
+        $shortenerUrl = $this->service->findByShortenerLink($shortenerLink);
         return redirect($shortenerUrl->original_url);
     }
 
