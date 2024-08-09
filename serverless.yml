@@ -107,7 +107,7 @@ functions:
     # This function runs the Laravel website/API
     web:
         handler: Bref\LaravelBridge\Http\OctaneHandler
-        runtime: php-83-fpm
+        runtime: php-83
         # memorySize: 128 # set to 512M instead of 1024M (the default)
         timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
         events:
